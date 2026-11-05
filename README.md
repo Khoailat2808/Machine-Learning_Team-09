@@ -1,7 +1,5 @@
 # ML: churn, CLV (DATATHON 2026)
 
-Kế hoạch chi tiết: [`tasks/ml-plan.md`](tasks/ml-plan.md).
-
 Website tích hợp mô hình (trang quản trị Marketing): [WEBADVANCE](https://github.com/xinmotlansay/WEBADVANCE).
 
 ## Dữ liệu
@@ -13,7 +11,6 @@ Website tích hợp mô hình (trang quản trị Marketing): [WEBADVANCE](https
 ## Cài đặt (Windows, Python 3.11)
 
 ```bash
-cd ml
 py -3.11 -m venv .venv
 .venv/Scripts/python -m pip install -r requirements.txt
 .venv/Scripts/python src/to_parquet.py   # CSV -> data/interim/*.parquet (chạy một lần)
@@ -40,7 +37,6 @@ tables = clean_tables(load_tables())   # {"orders": DataFrame, ...}, đã áp qu
 | `notebooks/` | notebook trình bày, chạy theo số thứ tự |
 | `src/` | code dùng lại (`to_parquet.py`, `clean.py`, `features.py`, `predict.py`) |
 | `models/` | artifact `.joblib`, `metadata.json` |
-| `reports/figures/` | hình cho báo cáo |
 
 ## Thứ tự chạy notebook
 
