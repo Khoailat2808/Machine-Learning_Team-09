@@ -1,0 +1,116 @@
+{
+ "version": "1.0.0",
+ "W_months": 12,
+ "L_years": 3,
+ "train_cutoffs": [
+  "2019-01-01",
+  "2019-07-01",
+  "2020-01-01"
+ ],
+ "valid_cutoff": "2021-01-01",
+ "test_cutoff": "2022-01-01",
+ "churn_features": [
+  "recency_days",
+  "frequency",
+  "monetary",
+  "mean_gap_days",
+  "std_gap_days",
+  "review_rate",
+  "cancel_rate",
+  "avg_installments",
+  "n_categories",
+  "main_source",
+  "main_category",
+  "region"
+ ],
+ "clv_features": [
+  "tenure_days",
+  "avg_order_value",
+  "mean_gap_days",
+  "std_gap_days",
+  "recency_ratio",
+  "orders_3m",
+  "orders_12m",
+  "spend_trend",
+  "active_years",
+  "promo_share",
+  "avg_discount_rate",
+  "cod_share",
+  "items_per_order",
+  "n_categories",
+  "main_category_GenZ",
+  "main_category_Outdoor"
+ ],
+ "clv_scale": 0.77446291193197,
+ "categories": {
+  "main_source": [
+   "direct",
+   "email_campaign",
+   "organic_search",
+   "paid_search",
+   "referral",
+   "social_media"
+  ],
+  "main_category": [
+   "Casual",
+   "GenZ",
+   "Outdoor",
+   "Streetwear"
+  ],
+  "gender": [
+   "Female",
+   "Male",
+   "Non-binary"
+  ],
+  "age_group": [
+   "18-24",
+   "25-34",
+   "35-44",
+   "45-54",
+   "55+"
+  ],
+  "acquisition_channel": [
+   "direct",
+   "email_campaign",
+   "organic_search",
+   "paid_search",
+   "referral",
+   "social_media"
+  ],
+  "region": [
+   "Central",
+   "East",
+   "West"
+  ]
+ },
+ "voucher_discount": 0.1200059734890987,
+ "s_ref": 0.3,
+ "p_cut": 0.6745326037811924,
+ "segment_rule": "p_churn cao: p >= p_cut; CLV cao: clv >= voucher_discount * avg_order_value",
+ "variant": "web",
+ "test_metrics": {
+  "churn": {
+   "roc_auc": 0.7533077037811009,
+   "pr_auc": 0.8412576144361607,
+   "brier": 0.1871213768844538
+  },
+  "clv": {
+   "spearman_orders": 0.3348454866859507,
+   "spearman_clv": 0.12523125066697305,
+   "sum_pred_over_actual": 0.7312993085568741
+  }
+ },
+ "known_limits": [
+  "không có cancel_rate, review, trả hàng, giao hàng, trả góp, thiết bị, kênh, vùng",
+  "giá vốn = tỷ suất trung vị theo danh mục",
+  "danh mục Web khác dataset -> main_category lạ rơi về mức trung bình",
+  "tỷ lệ cứu voucher chưa đo được, net chỉ là kịch bản"
+ ],
+ "cogs_ratio": {
+  "Casual": 0.6512000000000001,
+  "GenZ": 0.77525,
+  "Outdoor": 0.688,
+  "Streetwear": 0.7016,
+  "_all": 0.69415
+ }
+}

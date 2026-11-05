@@ -1,0 +1,187 @@
+{
+ "version": "1.0.0",
+ "W_months": 12,
+ "L_years": 3,
+ "train_cutoffs": [
+  "2019-01-01",
+  "2019-07-01",
+  "2020-01-01"
+ ],
+ "valid_cutoff": "2021-01-01",
+ "test_cutoff": "2022-01-01",
+ "churn_features": [
+  "recency_days",
+  "frequency",
+  "monetary",
+  "mean_gap_days",
+  "std_gap_days",
+  "review_rate",
+  "cancel_rate",
+  "avg_installments",
+  "n_categories",
+  "main_source",
+  "main_category",
+  "region"
+ ],
+ "clv_features": [
+  "tenure_days",
+  "avg_order_value",
+  "mean_gap_days",
+  "std_gap_days",
+  "recency_ratio",
+  "orders_3m",
+  "orders_12m",
+  "spend_trend",
+  "active_years",
+  "promo_share",
+  "avg_discount_rate",
+  "return_rate",
+  "avg_rating",
+  "low_rating_share",
+  "review_rate",
+  "late_delivery_share",
+  "cancel_rate",
+  "cod_share",
+  "avg_installments",
+  "items_per_order",
+  "n_categories",
+  "no_delivery",
+  "main_source_email_campaign",
+  "main_source_organic_search",
+  "main_source_paid_search",
+  "main_source_referral",
+  "main_source_social_media",
+  "main_category_GenZ",
+  "main_category_Outdoor",
+  "region_East",
+  "region_West"
+ ],
+ "clv_scale": 0.7750390923131626,
+ "categories": {
+  "main_source": [
+   "direct",
+   "email_campaign",
+   "organic_search",
+   "paid_search",
+   "referral",
+   "social_media"
+  ],
+  "main_category": [
+   "Casual",
+   "GenZ",
+   "Outdoor",
+   "Streetwear"
+  ],
+  "gender": [
+   "Female",
+   "Male",
+   "Non-binary"
+  ],
+  "age_group": [
+   "18-24",
+   "25-34",
+   "35-44",
+   "45-54",
+   "55+"
+  ],
+  "acquisition_channel": [
+   "direct",
+   "email_campaign",
+   "organic_search",
+   "paid_search",
+   "referral",
+   "social_media"
+  ],
+  "region": [
+   "Central",
+   "East",
+   "West"
+  ]
+ },
+ "voucher_discount": 0.1200059734890987,
+ "s_ref": 0.3,
+ "p_cut": 0.6745332458862754,
+ "segment_rule": "p_churn cao: p >= p_cut; CLV cao: clv >= voucher_discount * avg_order_value",
+ "test_metrics": {
+  "churn": {
+   "LightGBM thô": {
+    "PR_AUC": 0.8428,
+    "ROC_AUC": 0.7549,
+    "Brier": 0.1875,
+    "ECE": 0.0292,
+    "F1_ngưỡng": 0.8012,
+    "Recall_20": 0.2803
+   },
+   "LightGBM hiệu chỉnh": {
+    "PR_AUC": 0.8428,
+    "ROC_AUC": 0.7549,
+    "Brier": 0.1865,
+    "ECE": 0.0039,
+    "F1_ngưỡng": 0.8034,
+    "Recall_20": 0.2803
+   },
+   "LogReg hiệu chỉnh": {
+    "PR_AUC": 0.8429,
+    "ROC_AUC": 0.7551,
+    "Brier": 0.1865,
+    "ECE": 0.0063,
+    "F1_ngưỡng": 0.8028,
+    "Recall_20": 0.28
+   },
+   "Ngẫu nhiên (tham chiếu)": {
+    "PR_AUC": 0.6479,
+    "ROC_AUC": 0.5,
+    "Brier": 0.2281,
+    "ECE": NaN,
+    "F1_ngưỡng": NaN,
+    "Recall_20": 0.2
+   }
+  },
+  "clv": {
+   "số_đơn": {
+    "Spearman_số_đơn": 0.3354728535013102,
+    "MAE_số_đơn": 0.626546281851842,
+    "tổng_số_đơn_dự_đoán_trên_thực_tế": 1.0738987335539008
+   },
+   "phần_2": {
+    "NB × lợi nhuận/đơn": {
+     "Spearman_giá_gốc": 0.1272,
+     "Spearman_lợi_nhuận_gộp": 0.0813,
+     "MAE_giá_gốc": 6374.1337,
+     "tổng_trên_thực_tế": 0.7306
+    },
+    "Hằng số": {
+     "Spearman_giá_gốc": NaN,
+     "Spearman_lợi_nhuận_gộp": NaN,
+     "MAE_giá_gốc": 6408.0678,
+     "tổng_trên_thực_tế": 0.6874
+    }
+   },
+   "toàn_bộ": {
+    "Hai phần: NB × lợi nhuận/đơn": {
+     "Spearman_giá_gốc": 0.3008,
+     "top10_giá_gốc": 0.2898,
+     "Spearman_lợi_nhuận_gộp": 0.21,
+     "top10_lợi_nhuận_gộp": 0.2993
+    },
+    "Hai phần: chỉ 1 − p_churn": {
+     "Spearman_giá_gốc": 0.3011,
+     "top10_giá_gốc": 0.292,
+     "Spearman_lợi_nhuận_gộp": 0.2102,
+     "top10_lợi_nhuận_gộp": 0.3053
+    },
+    "Một phần: LightGBM Poisson số đơn × lợi nhuận/đơn": {
+     "Spearman_giá_gốc": 0.3007,
+     "top10_giá_gốc": 0.291,
+     "Spearman_lợi_nhuận_gộp": 0.2098,
+     "top10_lợi_nhuận_gộp": 0.3037
+    }
+   }
+  }
+ },
+ "known_limits": [
+  "cancel_rate nghi rò rỉ nhẹ (order_status là trạng thái cuối), không hiển thị làm lý do",
+  "tỷ lệ cứu voucher chưa đo được, net chỉ là kịch bản",
+  "đơn vị tiền không xác định"
+ ]
+}
